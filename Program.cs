@@ -71,7 +71,6 @@ namespace Camurphy.InternetConnectionMonitor
                         ProcessStartInfo processStartInfo = new ProcessStartInfo();
                         processStartInfo.FileName = Settings.Default.uTorrentExecutablePath;
                         processStartInfo.WindowStyle = ProcessWindowStyle.Maximized;
-                        processStartInfo.UseShellExecute = true;
 
                         Process.Start(processStartInfo);
                     }
