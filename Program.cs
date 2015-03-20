@@ -16,8 +16,14 @@ namespace Camurphy.InternetConnectionMonitor
         static void Main(string[] args)
         {
             var connectivityResponse = TestConnectivity();
+            bool online = connectivityResponse.Online;
 
-            if (!connectivityResponse.Online)
+            // Treat being outside of a VPN as offline
+            if (online && connectivityResponse.PublicIpAddress.Equals(Settings.Default.UnprotectedPublicIpAddress)) {
+                online = false;
+            }
+
+            if (online)
             {
                 PerformuTorrentProcessAction(ProcessAction.StartIfNotOpen);
             }
@@ -39,7 +45,7 @@ namespace Camurphy.InternetConnectionMonitor
 
                 try
                 {
-                    response.PublicIpAddress = client.DownloadString(Settings.Default.PublicIpAddressUrl);
+                    response.PublicIpAddress = client.DownloadString(Settings.Default.PublicIpAddressUrl).Trim();
                     response.Online = true;
                 }
                 catch (WebException ex)
@@ -62,7 +68,12 @@ namespace Camurphy.InternetConnectionMonitor
                 case ProcessAction.StartIfNotOpen:
                     if (!processes.Any())
                     {
-                        Process.Start(Settings.Default.uTorrentExecutablePath);
+                        ProcessStartInfo processStartInfo = new ProcessStartInfo();
+                        processStartInfo.FileName = Settings.Default.uTorrentExecutablePath;
+                        processStartInfo.WindowStyle = ProcessWindowStyle.Maximized;
+                        processStartInfo.UseShellExecute = true;
+
+                        Process.Start(processStartInfo);
                     }
                     break;
                 case ProcessAction.Stop:
@@ -87,8 +98,6 @@ namespace Camurphy.InternetConnectionMonitor
                     process = Process.Start(Settings.Default.ViscosityExecutablePath, String.Format("connect \"{0}\"", Settings.Default.ViscosityConnectionName));
                     break;
             }
-
-            process.WaitForExit();
         }
     }
 }

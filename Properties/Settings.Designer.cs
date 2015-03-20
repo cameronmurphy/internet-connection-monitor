@@ -50,27 +50,33 @@ namespace Camurphy.InternetConnectionMonitor.Properties {
             }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("C:\\Program Files\\Viscosity\\Viscosity.exe")]
         public string ViscosityExecutablePath {
             get {
                 return ((string)(this["ViscosityExecutablePath"]));
             }
-            set {
-                this["ViscosityExecutablePath"] = value;
-            }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Australia")]
         public string ViscosityConnectionName {
             get {
                 return ((string)(this["ViscosityConnectionName"]));
             }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("203.153.207.204")]
+        public string UnprotectedPublicIpAddress {
+            get {
+                return ((string)(this["UnprotectedPublicIpAddress"]));
+            }
             set {
-                this["ViscosityConnectionName"] = value;
+                this["UnprotectedPublicIpAddress"] = value;
             }
         }
     }
