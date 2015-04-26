@@ -15,9 +15,9 @@
       <Value Profile="(Default)">C:\Program Files\Viscosity\Viscosity.exe</Value>
     </Setting>
     <Setting Name="ViscosityConnectionName" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">Australia</Value>
+      <Value Profile="(Default)">Switzerland</Value>
     </Setting>
-    <Setting Name="UnprotectedPublicIpAddress" Type="System.String" Scope="User">
+    <Setting Name="UnprotectedPublicIpAddress" Type="System.String" Scope="Application">
       <Value Profile="(Default)">203.153.207.204</Value>
     </Setting>
   </Settings>

@@ -61,22 +61,19 @@ namespace Camurphy.InternetConnectionMonitor.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Australia")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Switzerland")]
         public string ViscosityConnectionName {
             get {
                 return ((string)(this["ViscosityConnectionName"]));
             }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("203.153.207.204")]
         public string UnprotectedPublicIpAddress {
             get {
                 return ((string)(this["UnprotectedPublicIpAddress"]));
-            }
-            set {
-                this["UnprotectedPublicIpAddress"] = value;
             }
         }
     }
