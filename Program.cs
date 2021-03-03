@@ -25,11 +25,11 @@ namespace Camurphy.InternetConnectionMonitor
 
             if (online)
             {
-                PerformuTorrentProcessAction(ProcessAction.StartIfNotOpen);
+                PerformTorrentClientProcessAction(ProcessAction.StartIfNotOpen);
             }
             else
             {
-                PerformuTorrentProcessAction(ProcessAction.Stop);
+                PerformTorrentClientProcessAction(ProcessAction.Stop);
                 RunViscosityCommand(ViscosityCommand.DisconnectAll);
                 RunViscosityCommand(ViscosityCommand.Connect);
             }
@@ -59,9 +59,9 @@ namespace Camurphy.InternetConnectionMonitor
             return response;
         }
 
-        private static void PerformuTorrentProcessAction(ProcessAction action)
+        private static void PerformTorrentClientProcessAction(ProcessAction action)
         {
-            Process[] processes = Process.GetProcessesByName(Settings.Default.uTorrentProcessName);
+            Process[] processes = Process.GetProcessesByName(Settings.Default.TorrentClientProcessName);
 
             switch (action)
             {
@@ -69,7 +69,7 @@ namespace Camurphy.InternetConnectionMonitor
                     if (!processes.Any())
                     {
                         ProcessStartInfo processStartInfo = new ProcessStartInfo();
-                        processStartInfo.FileName = Settings.Default.uTorrentExecutablePath;
+                        processStartInfo.FileName = Settings.Default.TorrentClientExecutablePath;
                         processStartInfo.WindowStyle = ProcessWindowStyle.Maximized;
 
                         Process.Start(processStartInfo);
